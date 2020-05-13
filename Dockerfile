@@ -1,6 +1,7 @@
 FROM openjdk:8-jre-alpine as builder
 #VOLUME /workspace/source/
-#WORKDIR /workspace/source/
+WORKDIR /workspace/source/
+ADD . /workspace/source/
 
 # Download dockerize and cache that layer
 # ARG DOCKERIZE_VERSION
@@ -11,12 +12,14 @@ ARG DOCKERIZE_VERSION
 # RUN tar xzf dockerize.tar.gz
 # RUN chmod +x dockerize
 
+FROM scratch
 # This is the first layer that won't be cached
 # ARG ARTIFACT_NAME
 ARG ARTIFACT_NAME=*
 ARG ARTIFACT_NAME
 #ADD ${ARTIFACT_NAME}.jar /app.jar
-COPY target/spring-petclinic-2.3.0.BUILD-SNAPSHOT.jar /app.jar
+COPY --from=builder /workspace/source/ /app/source/
+ADD target/spring-petclinic-2.3.0.BUILD-SNAPSHOT.jar /app.jar
 
 # ARG EXPOSED_PORT
 ARG EXPOSED_PORT=8080
