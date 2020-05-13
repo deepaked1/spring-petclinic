@@ -15,7 +15,7 @@ spec:
         app: pet-clinic
     spec:
       containers:
-        - image: quay.io/deepaked/pet-clinic:v0.0.1
+        - image: quay.io/deepaked/pet-clinic:latest
           imagePullPolicy: Always
           name: pet-clinic
           ports:
