@@ -20,7 +20,7 @@ RUN wget -O dockerize.tar.gz https://github.com/jwilder/dockerize/releases/downl
 RUN tar xzf dockerize.tar.gz
 RUN chmod +x dockerize
 
-# FROM scratch
+FROM scratch
 # This is the first layer that won't be cached
 # ARG ARTIFACT_NAME
 #ARG ARTIFACT_NAME=*
