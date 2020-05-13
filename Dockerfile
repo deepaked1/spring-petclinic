@@ -25,7 +25,7 @@ ARG ARTIFACT_NAME=*
 ARG ARTIFACT_NAME
 #ADD ${ARTIFACT_NAME}.jar /app.jar
 #COPY --from=build-stage /workspace/source/ /app/source/
-COPY /project/petclinic/target/spring-petclinic-2.3.0.BUILD-SNAPSHOT.jar /app.jar
+COPY --from=build-stage /project/petclinic/target/spring-petclinic-2.3.0.BUILD-SNAPSHOT.jar /app.jar
 
 # ARG EXPOSED_PORT
 ARG EXPOSED_PORT=8080
