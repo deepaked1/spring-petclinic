@@ -3,18 +3,18 @@ FROM openjdk:8-jre-alpine
 
 # Download dockerize and cache that layer
 # ARG DOCKERIZE_VERSION
-ENV DOCKERIZE_VERSION=v0.6.1
+DOCKERIZE_VERSION=v0.6.1
 RUN wget -O dockerize.tar.gz https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-alpine-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
 RUN tar xzf dockerize.tar.gz
 RUN chmod +x dockerize
 
 # This is the first layer that won't be cached
 # ARG ARTIFACT_NAME
-ENV ARTIFACT_NAME=*
+ARTIFACT_NAME=*
 ADD ${ARTIFACT_NAME}.jar /app.jar
 
 # ARG EXPOSED_PORT
-ENV EXPOSED_PORT=8080
+EXPOSED_PORT=8080
 EXPOSE ${EXPOSED_PORT}
 
 ENV SPRING_PROFILES_ACTIVE docker
