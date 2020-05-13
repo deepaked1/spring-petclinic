@@ -1,3 +1,9 @@
+FROM maven:3.6.0-jdk-8-slim AS build-stage
+COPY . /project
+WORKDIR /project/petclinic
+RUN mvn clean package
+
+
 FROM openjdk:8-jre-alpine
 #VOLUME /workspace/source/
 # WORKDIR /workspace/source/
@@ -18,8 +24,8 @@ ARG DOCKERIZE_VERSION
 ARG ARTIFACT_NAME=*
 ARG ARTIFACT_NAME
 #ADD ${ARTIFACT_NAME}.jar /app.jar
-# COPY --from=builder /workspace/source/ /app/source/
-ADD target/spring-petclinic-2.3.0.BUILD-SNAPSHOT.jar /app.jar
+#COPY --from=build-stage /workspace/source/ /app/source/
+COPY /project/petclinic/target/spring-petclinic-2.3.0.BUILD-SNAPSHOT.jar /app.jar
 
 # ARG EXPOSED_PORT
 ARG EXPOSED_PORT=8080
