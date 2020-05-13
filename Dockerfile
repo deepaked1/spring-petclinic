@@ -2,7 +2,7 @@ FROM maven:3.6.0-jdk-8-slim AS build-stage
 COPY . /project
 WORKDIR /project
 RUN ls -al
-RUN mvn clean package
+RUN mvn clean package -Dmaven.test.skip=true
 
 
 FROM openjdk:8-jre-alpine
