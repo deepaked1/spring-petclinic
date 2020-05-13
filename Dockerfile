@@ -1,6 +1,6 @@
 FROM openjdk:8-jre-alpine as builder
 #VOLUME /workspace/source/
-WORKDIR /workspace/source/
+#WORKDIR /workspace/source/
 
 # Download dockerize and cache that layer
 # ARG DOCKERIZE_VERSION
