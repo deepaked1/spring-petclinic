@@ -23,17 +23,18 @@ RUN chmod +x dockerize
 # FROM scratch
 # This is the first layer that won't be cached
 # ARG ARTIFACT_NAME
-ARG ARTIFACT_NAME=*
+#ARG ARTIFACT_NAME=*
 ARG ARTIFACT_NAME
 #ADD ${ARTIFACT_NAME}.jar /app.jar
 #COPY --from=build-stage /workspace/source/ /app/source/
-COPY --from=build-stage /project/target/spring-petclinic-2.3.0.BUILD-SNAPSHOT.jar /app.jar
+#COPY --from=build-stage /project/target/spring-petclinic-2.3.0.BUILD-SNAPSHOT.jar /app.jar
+COPY --from=build-stage /project/target/${ARTIFACT_NAME}.jar /app.jar
 
 # ARG EXPOSED_PORT
-ARG EXPOSED_PORT=8080
+#ARG EXPOSED_PORT=8080
 ARG EXPOSED_PORT
-#EXPOSE ${EXPOSED_PORT}
-EXPOSE 8080
+EXPOSE ${EXPOSED_PORT}
+#EXPOSE 8080
 
 ENV SPRING_PROFILES_ACTIVE docker
 
