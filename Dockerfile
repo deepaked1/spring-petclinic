@@ -1,5 +1,5 @@
 FROM openjdk:8-jre-alpine
-#VOLUME /tmp
+VOLUME /workspace/source/
 
 # Download dockerize and cache that layer
 # ARG DOCKERIZE_VERSION
