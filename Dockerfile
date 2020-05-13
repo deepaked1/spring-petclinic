@@ -16,7 +16,7 @@ FROM openjdk:8-jre-alpine
 ARG DOCKERIZE_VERSION
 #RUN echo ${DOCKERIZE_VERSION}
 #RUN wget -O dockerize.tar.gz https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-alpine-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
-RUN wget -O dockerize.tar.gz https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize-alpine-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
+RUN wget -O dockerize.tar.gz https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-alpine-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
 RUN tar xzf dockerize.tar.gz
 RUN chmod +x dockerize
 
@@ -28,7 +28,7 @@ ARG ARTIFACT_NAME
 #ADD ${ARTIFACT_NAME}.jar /app.jar
 #COPY --from=build-stage /workspace/source/ /app/source/
 #COPY --from=build-stage /project/target/spring-petclinic-2.3.0.BUILD-SNAPSHOT.jar /app.jar
-COPY --from=build-stage /project/target/${ARTIFACT_NAME}.jar /app.jar
+COPY --from=build-stage /project/${ARTIFACT_NAME}.jar /app.jar
 
 # ARG EXPOSED_PORT
 #ARG EXPOSED_PORT=8080
