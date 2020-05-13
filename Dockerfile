@@ -15,7 +15,7 @@ ARG DOCKERIZE_VERSION
 ARG ARTIFACT_NAME=*
 ARG ARTIFACT_NAME
 #ADD ${ARTIFACT_NAME}.jar /app.jar
-ADD target/*.jar /app.jar
+ADD target/spring-petclinic-2.3.0.BUILD-SNAPSHOT.jar /app.jar
 
 # ARG EXPOSED_PORT
 ARG EXPOSED_PORT=8080
