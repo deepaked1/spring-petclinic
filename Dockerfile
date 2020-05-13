@@ -1,5 +1,6 @@
-FROM openjdk:8-jre-alpine
-VOLUME /workspace/source/
+FROM openjdk:8-jre-alpine as builder
+#VOLUME /workspace/source/
+WORKDIR /workspace/source/
 
 # Download dockerize and cache that layer
 # ARG DOCKERIZE_VERSION
@@ -15,7 +16,7 @@ ARG DOCKERIZE_VERSION
 ARG ARTIFACT_NAME=*
 ARG ARTIFACT_NAME
 #ADD ${ARTIFACT_NAME}.jar /app.jar
-ADD target/spring-petclinic-2.3.0.BUILD-SNAPSHOT.jar /app.jar
+COPY target/spring-petclinic-2.3.0.BUILD-SNAPSHOT.jar /app.jar
 
 # ARG EXPOSED_PORT
 ARG EXPOSED_PORT=8080
