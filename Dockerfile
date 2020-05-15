@@ -1,14 +1,12 @@
-FROM maven:3.6.0-jdk-8-slim AS build-stage
-COPY . /project
-# COPY /workspace/target /project
-WORKDIR /project
+# FROM maven:3.6.0-jdk-8-slim AS build-stage
+# COPY . /project
+# # COPY /workspace/target /project
+# WORKDIR /project
 #RUN mvn clean package -Dmaven.test.skip=true
-RUN ls -al
 
 
 FROM openjdk:8-jre-alpine
 ARG DOCKERIZE_VERSION
-RUN ls -al
 #RUN wget -O dockerize.tar.gz https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-alpine-linux-amd64-${DOCKERIZE_VERSION}.tar.gz 
 RUN wget -O dockerize.tar.gz https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize-alpine-linux-amd64-v0.6.1.tar.gz && \
    tar xzf dockerize.tar.gz && \
