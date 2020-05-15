@@ -9,10 +9,10 @@ RUN ls -al
 FROM openjdk:8-jre-alpine
 ARG DOCKERIZE_VERSION
 RUN ls -al
-RUN wget -O dockerize.tar.gz https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-alpine-linux-amd64-${DOCKERIZE_VERSION}.tar.gz 
-# RUN wget -O dockerize.tar.gz https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize-alpine-linux-amd64-v0.6.1.tar.gz && \
-RUN    tar xzf dockerize.tar.gz 
-RUN    chmod +x dockerize
+#RUN wget -O dockerize.tar.gz https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-alpine-linux-amd64-${DOCKERIZE_VERSION}.tar.gz 
+RUN wget -O dockerize.tar.gz https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize-alpine-linux-amd64-v0.6.1.tar.gz && \
+   tar xzf dockerize.tar.gz && \
+    chmod +x dockerize
 
 FROM scratch
 ARG ARTIFACT_NAME
