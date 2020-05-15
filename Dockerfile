@@ -1,7 +1,7 @@
-FROM maven:3.6.0-jdk-8-slim AS build-stage
-COPY . /project
-WORKDIR /project
-RUN mvn clean package -Dmaven.test.skip=true
+# FROM maven:3.6.0-jdk-8-slim AS build-stage
+# COPY . /project
+# WORKDIR /project
+# RUN mvn clean package -Dmaven.test.skip=true
 
 
 FROM openjdk:8-jre-alpine
@@ -12,7 +12,8 @@ RUN wget -O dockerize.tar.gz https://github.com/jwilder/dockerize/releases/downl
 
 FROM scratch
 ARG ARTIFACT_NAME
-COPY --from=build-stage /project/${ARTIFACT_NAME}.jar /app.jar
+# COPY --from=build-stage /project/${ARTIFACT_NAME}.jar /app.jar
+COPY ${ARTIFACT_NAME}.jar /app.jar
 
 ARG EXPOSED_PORT
 EXPOSE ${EXPOSED_PORT}
