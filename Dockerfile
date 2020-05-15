@@ -1,7 +1,7 @@
 FROM maven:3.6.0-jdk-8-slim AS build-stage
 COPY . /project
 # COPY /workspace/target /project
-# WORKDIR /project
+WORKDIR /project
 # RUN mvn clean package -Dmaven.test.skip=true
 
 
