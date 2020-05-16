@@ -15,7 +15,7 @@ RUN wget -O dockerize.tar.gz https://github.com/jwilder/dockerize/releases/downl
 # FROM scratch
 ARG ARTIFACT_NAME
 # COPY --from=build-stage /project/${ARTIFACT_NAME}.jar /app.jar
-COPY ${ARTIFACT_NAME}.jar /app.jar
+COPY ${ARTIFACT_NAME} /app.jar
 
 ARG EXPOSED_PORT
 EXPOSE ${EXPOSED_PORT}
