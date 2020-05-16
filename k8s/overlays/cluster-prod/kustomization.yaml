@@ -5,5 +5,5 @@ patchesJson6902:
       version: v1
       group: apps
       kind: Deployment
-      name: pet-clinic
+      name: spring-petclinic
     path: deployment.yaml
