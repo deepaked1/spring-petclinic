@@ -6,6 +6,7 @@ metadata:
   name: spring-petclinic
 spec:
   replicas: 1
+  revisionHistoryLimit: 4
   selector:
     matchLabels:
       app: spring-petclinic
