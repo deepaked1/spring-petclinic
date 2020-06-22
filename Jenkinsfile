@@ -7,7 +7,7 @@ node {
    stage('Build') {
       sh 'docker version'
       withEnv(["MVN_HOME=$mvnHome"]) {
-            sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore -s $MAVEN_SETTINGS clean package'
+            sh 'echo $("$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore -s $MAVEN_SETTINGS clean package)'
       }
    }
 }
