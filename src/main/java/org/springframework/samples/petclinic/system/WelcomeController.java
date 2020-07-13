@@ -24,6 +24,7 @@ class WelcomeController {
 
 	@GetMapping("/")
 	public String welcome() {
+		System.out.println("Invoking Welcome");
 		return "welcome";
 	}
 
