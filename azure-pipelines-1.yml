@@ -38,6 +38,6 @@ stages:
           echo Hello world
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$(Pipeline.Workspace)/s/$(jarFileName)'
+        targetPath: '$(Pipeline.Workspace)/s/*.jar'
         artifact: 'petclinic-jar'
         publishLocation: 'pipeline'
