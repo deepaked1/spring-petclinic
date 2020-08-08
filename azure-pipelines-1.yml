@@ -34,10 +34,10 @@ stages:
       name: getJarFileName
       inputs:
         script: |
-          jarFileName = ls -1t target/*.jar | head -1
+          export jarFileName = $(ls -1t target/*.jar | head -1)
           echo Hello world
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$(Pipeline.Workspace)/$(jarFileName)'
+        targetPath: '$(Pipeline.Workspace)/s/$(jarFileName)'
         artifact: 'petclinic-jar'
         publishLocation: 'pipeline'
