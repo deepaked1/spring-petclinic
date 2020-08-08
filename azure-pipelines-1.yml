@@ -39,6 +39,6 @@ stages:
           echo Hello world
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$(Pipeline.Workspace)/s/*.jar'
+        targetPath: '$(Pipeline.Workspace)/s/target/spring-petclinic-0.0.14.jar'
         artifact: 'petclinic-jar'
         publishLocation: 'pipeline'
