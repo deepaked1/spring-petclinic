@@ -34,7 +34,7 @@ stages:
       name: getJarFileName
       inputs:
         script: |
-          export jarFileName = $(ls -1t target/*.jar | head -1)
+          export jarFileName=$(ls -1t target/*.jar | head -1)
           echo Hello world
     - task: PublishPipelineArtifact@1
       inputs:
