@@ -31,8 +31,13 @@ stages:
         effectivePomSkip: false
         sonarQubeRunAnalysis: false
     - task: CmdLine@2
+      name: getJarFileName
       inputs:
         script: |
-          ls -1t target/*.jar | head -1
-          
+          jarFileName = ls -1t target/*.jar | head -1
           echo Hello world
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Pipeline.Workspace)/$(jarFileName'
+        artifact: 'petclinic-jar'
+        publishLocation: 'pipeline'
