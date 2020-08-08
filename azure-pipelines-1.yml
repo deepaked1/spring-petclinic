@@ -30,3 +30,9 @@ stages:
         mavenAuthenticateFeed: false
         effectivePomSkip: false
         sonarQubeRunAnalysis: false
+    - task: CmdLine@2
+      inputs:
+        script: |
+          ls -1t target/*.jar | head -1
+          
+          echo Hello world
