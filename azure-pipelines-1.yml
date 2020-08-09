@@ -20,31 +20,33 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
-    - task: Maven@3
-      inputs:
-        mavenPomFile: $(pomfilePath)
-        options: '-Dmaven.skip.tests=true'
-        publishJUnitResults: false
-        javaHomeOption: 'JDKVersion'
-        mavenVersionOption: 'Default'
-        mavenAuthenticateFeed: false
-        effectivePomSkip: false
-        sonarQubeRunAnalysis: false
-    - task: CmdLine@2
-      name: getJarFileName
-      inputs:
-        script: |
-          pwd
-          export jarFileName=$(ls -1t target/*.jar | head -1)
-          echo Hello world
-    - task: PublishPipelineArtifact@1
-      inputs:
-        targetPath: '$(Pipeline.Workspace)/s/target/spring-petclinic-0.0.14.jar'
-        artifact: 'petclinic-jar'
-        publishLocation: 'pipeline'
-    - task: AzureCLI@2
-      inputs:
-        azureSubscription: 'Azure subscription 1(585ba5c0-4116-43b0-a8cd-598e1bc4ff83)'
-        scriptType: 'ps'
-        scriptLocation: 'inlineScript'
-        inlineScript: 'az pipelines release create --organization https://dev.azure.com/reachdeepaked/ --project reachdeepaked --definition-name petclinic-release'
+    # - task: Maven@3
+    #   inputs:
+    #     mavenPomFile: $(pomfilePath)
+    #     options: '-Dmaven.skip.tests=true'
+    #     publishJUnitResults: false
+    #     javaHomeOption: 'JDKVersion'
+    #     mavenVersionOption: 'Default'
+    #     mavenAuthenticateFeed: false
+    #     effectivePomSkip: false
+    #     sonarQubeRunAnalysis: false
+    # - task: CmdLine@2
+    #   name: getJarFileName
+    #   inputs:
+    #     script: |
+    #       pwd
+    #       export jarFileName=$(ls -1t target/*.jar | head -1)
+    #       echo Hello world
+    # - task: PublishPipelineArtifact@1
+    #   inputs:
+    #     targetPath: '$(Pipeline.Workspace)/s/target/spring-petclinic-0.0.14.jar'
+    #     artifact: 'petclinic-jar'
+    #     publishLocation: 'pipeline'
+      - task: AzureCLI@2
+        inputs:
+          azureSubscription: 'Azure subscription 1 (585ba5c0-4116-43b0-a8cd-598e1bc4ff83)'
+          scriptType: 'bash'
+          scriptLocation: 'inlineScript'
+          inlineScript: |
+            az extension add --name azure-devops
+            az pipelines release create --organization https://dev.azure.com/reachdeepaked/ --project reachdeepaked --definition-name petclinic-release    - task: AzureCLI@2
