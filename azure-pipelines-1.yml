@@ -48,4 +48,5 @@ stages:
           scriptType: 'bash'
           scriptLocation: 'inlineScript'
           inlineScript: |
+            export AZURE_DEVOPS_EXT_PAT=3x4b2tp7lp3vabfv4trxexhhadgqikrcqe23zrqi5ufwfv7xsboa
             az pipelines release create --organization https://dev.azure.com/reachdeepaked/ --project reachdeepaked --definition-name petclinic-release
