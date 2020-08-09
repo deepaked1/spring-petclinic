@@ -42,3 +42,9 @@ stages:
         targetPath: '$(Pipeline.Workspace)/s/target/spring-petclinic-0.0.14.jar'
         artifact: 'petclinic-jar'
         publishLocation: 'pipeline'
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: 'Azure subscription 1(585ba5c0-4116-43b0-a8cd-598e1bc4ff83)'
+        scriptType: 'ps'
+        scriptLocation: 'inlineScript'
+        inlineScript: 'az pipelines release create --organization https://dev.azure.com/reachdeepaked/ --project reachdeepaked --definition-name petclinic-release'
