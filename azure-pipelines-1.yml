@@ -48,4 +48,4 @@ stages:
           scriptType: 'bash'
           scriptLocation: 'inlineScript'
           inlineScript: |
-            az pipelines release create --organization https://dev.azure.com/reachdeepaked/ --project reachdeepaked --definition-name petclinic-release    - task: AzureCLI@2
+            az pipelines release create --organization https://dev.azure.com/reachdeepaked/ --project reachdeepaked --definition-name petclinic-release
