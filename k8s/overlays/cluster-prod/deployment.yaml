@@ -1,6 +1,6 @@
 - op: replace
   path: /spec/replicas
-  value: 2
+  value: 3
 # - op: add
 #   path: /spec/template/metadata/annotations/sidecar.istio.io/inject
 #   value: "true"
