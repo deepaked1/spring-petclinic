@@ -44,7 +44,7 @@ stages:
         publishLocation: 'pipeline'
     - task: AzureCLI@2
       inputs:
-        azureSubscription: 'Azure subscription 1 (585ba5c0-4116-43b0-a8cd-598e1bc4ff83)'
+        azureSubscription: 'Azure subscription 1 (***)'
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
